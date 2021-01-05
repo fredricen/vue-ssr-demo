@@ -114,13 +114,13 @@ src
 
 ## 客户端入口
 
-挂载、激活服务端渲染页面为单页面应用（SPA）entry-client.js
+挂载、激活服务端渲染页面为单页面应用（SPA），创建.src/entry-client.js
 
 
 
 ## webpack打包
 
-创建vue.config.js
+创建vue.config.js,内容如下：
 
 ```javascript
 const VueSSRServerPlugin = require("vue-server-renderer/server-plugin")
