@@ -28,7 +28,7 @@ const renderer = createBundleRenderer(serverBundle,{
 })
 
 //中间件处理静态文件请求
-app.use(express.static('../../dist/client',{index:false}))
+app.use(express.static('../../dist/client',{index:false}))//index为false表示，忽略默认的index.html作为入口，采用自定义入口
 
 //路由处理交给vue
 app.get('*',async (req,res)=>{
