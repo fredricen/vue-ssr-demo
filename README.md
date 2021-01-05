@@ -189,7 +189,7 @@ npm i cross-env -D
 定义创建脚本，package.json
 
 ```javascript
-"script":{
+"scripts":{
     "build:client": "vue-cli-service build",
     "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build --mode server",
     "build": "npm run build:server && npm run build:client"

@@ -1,12 +1,19 @@
 //nodejs服务器
 const express = require('express')
 const fs = require('fs')
+const path = require('path')
 
 //创建express实例
 const app = express()
 //创建渲染器
 const {createBundleRenderer} = require('vue-server-renderer')
+const serverBundlePath = path.resolve('/dist/server/','../../',__dirname,'vue-ssr-server-bundle.json')
+console.log(serverBundlePath)
+//const serverBundle = require(serverBundlePath)
 const serverBundle = require('../dist/server/vue-ssr-server-bundle.json')
+const clientManifestPath = path.resolve('/dist/client','../../',__dirname,'vue-ssr-client-manifest.json')
+console.log(clientManifestPath)
+//const clientManifest = require(clientManifestPath)
 const clientManifest = require('../dist/client/vue-ssr-client-manifest.json')
 const renderer = createBundleRenderer(serverBundle,{
     runInNewContext:false,

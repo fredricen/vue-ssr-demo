@@ -25,12 +25,12 @@ module.exports = {
             libraryTarget: TARGET_NODE?'commonjs2':undefined
         },
         //外置化应用程序依赖模块，可以使服务器构建速度更快，并生成较小的bundle文件
-        externals:TARGET_NODE?nodeExternals({
+        externals:[TARGET_NODE?nodeExternals({
             //不要外置化webpack需要处理的依赖模块
             //可以在这里添加更多的文件类型，例如，未处理*.vue原始文件
             //你还应该将修改`global`（例如polyfill）的依赖模块列入白名单
-            whiteList: [/\.css$/]
-        }):undefined,
+            allowlist: [/\.css$/]
+        }):undefined],
         optimization:{
             splitChunks:undefined
         },

@@ -1,11 +1,13 @@
 {
-  "name": "ssr",
+  "name": "vue-ssr-demo",
   "version": "0.1.0",
   "private": true,
-  "script": {
+  "scripts": {
     "build:client": "vue-cli-service build",
     "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build --mode server",
-    "build": "npm run build:server && npm run build:client"
+    "build": "npm run build:server && npm run build:client",
+    "dev": "npx nodemon ./src/server/index.js",
+    "dev2": "npx nodemon ./src/server/index2.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
