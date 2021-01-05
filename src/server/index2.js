@@ -7,22 +7,28 @@ const path = require('path')
 const app = express()
 //创建渲染器
 const {createBundleRenderer} = require('vue-server-renderer')
-const serverBundlePath = path.resolve('/dist/server/','../../',__dirname,'vue-ssr-server-bundle.json')
-console.log(serverBundlePath)
-//const serverBundle = require(serverBundlePath)
-const serverBundle = require('../dist/server/vue-ssr-server-bundle.json')
-const clientManifestPath = path.resolve('/dist/client','../../',__dirname,'vue-ssr-client-manifest.json')
-console.log(clientManifestPath)
-//const clientManifest = require(clientManifestPath)
-const clientManifest = require('../dist/client/vue-ssr-client-manifest.json')
+
+/* require可以使用相对路径，也可以使用绝对路径，以下两种方式都是有效的 */
+// const serverBundlePath = path.resolve(__dirname,'../../dist/server/vue-ssr-server-bundle.json')
+// const serverBundle = require(serverBundlePath)
+const serverBundle = require('../../dist/server/vue-ssr-server-bundle.json')
+const clientManifestPath = path.resolve(__dirname,'../../dist/client/vue-ssr-client-manifest.json')
+const clientManifest = require(clientManifestPath)
+//const clientManifest = require('../../dist/client/vue-ssr-client-manifest.json')
+
+/* 以下两个都是有效的 */
+//const templatePath = path.resolve(__dirname,'../../public/index.template.html')
+//const templatePath = path.join(__dirname,'../../public/index.template.html')
+/* readFileSync读取文件目录默认是从项目的根目录开始的 */
+const templatePath = './public/index.template.html'
 const renderer = createBundleRenderer(serverBundle,{
     runInNewContext:false,
-    template:fs.readFileSync('../public/index.template.html','utf-8'),//宿主模板文件
+    template:fs.readFileSync(templatePath,'utf-8'),//宿主模板文件
     clientManifest
 })
 
 //中间件处理静态文件请求
-app.use(express.static('../dist/client',{index:false}))
+app.use(express.static('../../dist/client',{index:false}))
 
 //路由处理交给vue
 app.get('*',async (req,res)=>{

@@ -7,8 +7,8 @@ export default function createRouter(){
     return new Router({
         mode:'history',
         routes:[
-            {path:'/',component:()=>import('@/components/home')},
-            {path:'/detail',component:()=>import('@/components/detail')}
+            {path:'/',component:()=>import('@/components/Home')},
+            {path:'/detail',component:()=>import('@/components/Detail')}
         ]
     })
 }
