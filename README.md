@@ -82,7 +82,7 @@ npm i vue-router
 
 ### 构建流程
 
-![服务端渲染流程](F:\frontEndFrame\vue\ssr\vue服务端渲染构建.png)
+![服务端渲染流程](./vue服务端渲染构建.png)
 
 ### 代码结构
 
